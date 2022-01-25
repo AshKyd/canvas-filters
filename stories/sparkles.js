@@ -1,9 +1,9 @@
-import MSRand from 'msrand';
+import MSRand from "msrand";
 
 const ellation = [
   ["0001000", "0001000", "0011100", "1111111", "0011100", "0001000", "0001000"],
   ["0000000", "0001000", "0011100", "0001000", "0000000", "0000000", "0000000"],
-  ["0000000", "0000000", "0000000", "0001000", "0000000", "0000000", "0000000"]
+  ["0000000", "0000000", "0000000", "0001000", "0000000", "0000000", "0000000"],
 ];
 let locations;
 let firstRun = true;
@@ -22,17 +22,21 @@ function drawSparkle({ ctx, x, y, seed = 0, frameNumber = 0 }) {
   }
 }
 
-
-export default function sparkles({ canvas, frameNumber=0, seed=0, count=30 }) {
+export default function sparkles({
+  canvas,
+  frameNumber = 0,
+  seed = 0,
+  count = 30,
+}) {
   const myRng = new MSRand(seed);
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
   ctx.fillStyle = "white";
 
   locations = Array.from({ length: count }).map((nul, i) => {
     return [
       Math.round(myRng.randMax(canvas.width)),
       Math.round(myRng.randMax(canvas.height)),
-      Math.round(myRng.randMax(2))
+      Math.round(myRng.randMax(2)),
     ];
   });
 
@@ -42,9 +46,9 @@ export default function sparkles({ canvas, frameNumber=0, seed=0, count=30 }) {
       x,
       y,
       seed,
-      frameNumber
+      frameNumber,
     });
   });
 
   return canvas;
-};
+}

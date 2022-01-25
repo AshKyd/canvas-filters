@@ -1,20 +1,20 @@
-export function createCanvas(w,h){
-    const c = document.createElement('canvas');
-    c.width = w;
-    c.height = h;
-    return c;
+export function createCanvas(w, h) {
+  const c = document.createElement("canvas");
+  c.width = w;
+  c.height = h;
+  return c;
 }
 
-export function createImageFilePicker(onload){
-    const fileSelector = document.createElement("input");
-    fileSelector.type = "file";
-    fileSelector.innerText = "Load file";
-    fileSelector.addEventListener("change", async (event) => {
-        console.log('got file')
-        const canvas = await readImage(event.target.files[0]);
-        onload(canvas);
-    });
-    return fileSelector;
+export function createImageFilePicker(onload) {
+  const fileSelector = document.createElement("input");
+  fileSelector.type = "file";
+  fileSelector.innerText = "Load file";
+  fileSelector.addEventListener("change", async (event) => {
+    console.log("got file");
+    const canvas = await readImage(event.target.files[0]);
+    onload(canvas);
+  });
+  return fileSelector;
 }
 
 function readImage(file) {
@@ -55,7 +55,7 @@ function loadDataUrlIntoCanvas(dataUrl) {
 
 async function loadImageAsCanvas(image) {
   await awaitImageLoad(image);
-  const c = createCanvas(image.width,image.height);
+  const c = createCanvas(image.width, image.height);
   const ctx = c.getContext("2d");
   ctx.drawImage(image, 0, 0);
   return c;
